@@ -20,7 +20,7 @@ Header.defaultProps = {
     title:'Task Tracker',
 }
 Header.propTypes = {
-    title: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired, 
 }
 //css in js
 /* const headingStyle = {
