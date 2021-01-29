@@ -17,18 +17,38 @@ const App =() => {
         day:'Feb 8th at 10:00am',
         reminder:false,
 
+    },
+    {
+        id:3,
+        text: 'Cycling',
+        day:'Feb 9th at 11:00am',
+        reminder:true,
+
     }
 
 ])
 
 //Delete Task
 const deleteTask= (id) => {
-  console.log('delete',id);
+  setTasks(tasks.filter((task)=> task.id !== id));
 }
-  return (
+
+//Toggle reminder
+const toggleReminder= (id) => {
+  setTasks(tasks.map((task)=>{
+    if(task.id === id){
+      task.reminder = !task.reminder;
+    }
+    return task;
+  }));
+}
+
+return (
     <div className="container">
       <Header/>
-      <Tasks tasks={tasks} onDelete={deleteTask}/>
+      {tasks.length>0 
+      ?(<Tasks tasks={tasks} onDelete={deleteTask} 
+      onToggle={toggleReminder} />):('No Tasks to show')}
     </div>
 
     
